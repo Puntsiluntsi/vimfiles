@@ -133,6 +133,7 @@ autocmd FileType java cnoreabbrev <expr> Build ((getcmdtype() is# ':' && getcmdl
 " Bind Delete to :bd (delete buffer)
 nnoremap <Del> :bd<CR>
 nnoremap <S-Del> :exec "bd!" bufnr('%')<CR>
+nnoremap <C-Del> :%bd<CR>
 " For persistant/buggy buffers 
 
 " make Y behave like C,D and not yy
