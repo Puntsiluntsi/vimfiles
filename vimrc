@@ -4,8 +4,8 @@
 " Make :e with no arguemnts equivelant to :E but with working dir, and :E with filepath equivelant to :e but relative to current file directory.
 " Execute "set modified" when folding (count folds as changes, matching the behavior of saving folds on writing)
 
-let s:vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-exec "set runtimepath+=".s:vimfilesPath
+let vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+exec "set runtimepath+=".vimfilesPath
 
 " Color Scheme
 syntax enable
@@ -66,7 +66,7 @@ set hidden
 autocmd FileType netrw setl bufhidden=delete
 
 " Save folds
-let &viewdir = s:vimfilesPath."/view"
+let &viewdir = vimfilesPath."/view"
 
 augroup AutoSaveFolds
   autocmd!
@@ -75,7 +75,7 @@ augroup AutoSaveFolds
 augroup END
 
 " Refresh plugin docs:
-exec "helptags" s:vimfilesPath."/doc"
+exec "helptags" vimfilesPath."/doc"
 
 " Don't wrap lines at the middle of WORDS:
 set linebreak
@@ -197,3 +197,13 @@ inoremap <expr>j pumvisible() ? "\<C-N>" : "j"
 inoremap <expr>k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr><C-Space> pumvisible() ? "\<C-E>" : "<Esc>"
 inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
+
+" Plug Section:
+
+
+call plug#begin(vimfilesPath.'/plugged')
+
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+
+call plug#end()

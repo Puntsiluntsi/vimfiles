@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='C:/Program Files (x86)/Common Files/Intel/Shared Libraries/compiler/lib/mic'
 let g:netrw_dirhist_2='E:\Maayan\Drive\Coding\Java'
 let g:netrw_dirhist_3='E:/Maayan/Drive/Coding/Python/cs1001'
 let g:netrw_dirhist_4='C:\Users\Maayan'
 let g:netrw_dirhist_5='E:/Programs/Vim'
+let g:netrw_dirhist_6='E:/Maayan/Drive'

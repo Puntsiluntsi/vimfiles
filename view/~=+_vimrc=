@@ -24,12 +24,12 @@ setlocal conceallevel=0
 setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
-setlocal nocursorbind
+setlocal cursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
 setlocal define=
 setlocal dictionary=
-setlocal nodiff
+setlocal diff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
@@ -37,13 +37,13 @@ if &filetype != 'vim'
 setlocal filetype=vim
 endif
 setlocal fixendofline
-setlocal foldcolumn=0
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
+setlocal foldmethod=diff
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
@@ -82,7 +82,7 @@ setlocal noreadonly
 setlocal relativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
-setlocal noscrollbind
+setlocal scrollbind
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal signcolumn=auto
@@ -111,26 +111,15 @@ setlocal noundofile
 setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
-silent! normal! zE
-12,22fold
-31,34fold
-46,53fold
-59,65fold
-75,82fold
-92,110fold
-88,114fold
-128,138fold
-141,147fold
-153,154fold
-120,167fold
-173,176fold
-let s:l = 59 - ((0 * winheight(0) + 15) / 31)
+161
+normal! zo
+let s:l = 66 - ((25 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-59
+66
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
