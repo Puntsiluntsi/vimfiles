@@ -5,6 +5,8 @@
 " Execute "set modified" when folding (count folds as changes, matching the behavior of saving folds on writing)
 
 let vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let vimfilesDir = vimfilesPath
+let $MYVIMRC = resolve(expand('<sfile>:p'))
 exec "set runtimepath+=".vimfilesPath
 
 " Color Scheme
