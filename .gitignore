@@ -1,4 +1,4 @@
 *.swp
 view/*
-.netrwlist
+.netrwhist
 plugged/*
