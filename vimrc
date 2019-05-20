@@ -1,12 +1,15 @@
 " TODO:
+" Make dos2unix and unix2dos commands using setlocal ff=unix/ff=dos and possible a write afterwards.
 " Make this vimrc cross platform.
 " Make Cd command which is equivelant to cd but relative to current file directory
 " Make :e with no arguemnts equivelant to :E but with working dir, and :E with filepath equivelant to :e but relative to current file directory.
 " Execute "set modified" when folding (count folds as changes, matching the behavior of saving folds on writing)
 
+
 let vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 exec "set runtimepath+=".vimfilesPath
 
+exec 'source' vimfilesPath.'/settings.vim'
 " Color Scheme
 syntax enable
 
@@ -27,40 +30,6 @@ function! PopPos()
     return l:pos
 endfunction
 
-" Tab/Indent settings:
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-" Always show status line
-set laststatus=2
-
-" Fuzzy searching
-"set path=./**/,.,,/**
-"let &path = getcwd() . "/**/,.,,"
-let &path = ",.,,/**/"
-"noremap <C-P> :<C-U>find *
-
-" Wildcard menu
-set wildmenu
-set wildignorecase
-
-" Autoindent
-set autoindent
-
-" GitDiff command (TODO: solve the problem with carriage returns in windows, and allow for optional filename arguemnts.)
-command! -nargs=* -complete=file GitDiff write !git diff % -
-
-" Relative line numbers
-set number
-set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
-
-" Allow hidden buffers
-set hidden
 
 " Fix for the persistant netrw buffers:
 autocmd FileType netrw setl bufhidden=delete
@@ -76,20 +45,6 @@ augroup END
 
 " Refresh plugin docs:
 exec "helptags" vimfilesPath."/doc"
-
-" Don't wrap lines at the middle of WORDS:
-set linebreak
-let &breakat=' '
-
-" Search/Replace preferences:
-set gdefault " Replacing is global by default (replace all)
-
-set ignorecase
-set smartcase
-" Case insensitive search unless capital letters are present in the search or \C is given.
-
-set incsearch
-" Go to search results and highlight while typing the search
 
 " Change Ctrl-P path to cwd:
 let g:ctrlp_working_path_mode = 'rwa'
