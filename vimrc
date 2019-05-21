@@ -12,11 +12,17 @@ let $MYVIMRC = resolve(expand('<sfile>:p'))
 exec "set runtimepath+=".vimfilesPath
 
 exec 'source' vimfilesPath.'/settings.vim'
+
 " Color Scheme
+let colorScheme256 = 'monokai'
+let colorSchemeBasic = 'default'
+
 syntax enable
 
 if (&t_Co==256)
-    colorscheme monokai
+    exec 'colorscheme' colorScheme256
+else
+    exec 'colorscheme' colorSchemeBasic
 endif
 
 " Functions PushPos and PopPos for remembering and going to cursor position: 
@@ -156,12 +162,5 @@ inoremap <expr>k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr><C-Space> pumvisible() ? "\<C-E>" : "<Esc>"
 inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
 
-" Plug Section:
-
-
-call plug#begin(vimfilesPath.'/plugged')
-
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-surround'
-
-call plug#end()
+exec 'source' vimfilesPath.'/pluggins.vim'
+exec 'source' vimfilesPath.'/commands.vim'

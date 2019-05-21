@@ -1,5 +1,5 @@
 " Color Scheme
-colorscheme monokai
+exec 'colorscheme' colorScheme256
 
 " Font
 set guifont=Consolas:h17 
