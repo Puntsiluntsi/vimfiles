@@ -1,10 +1,10 @@
 " TODO:
-" Make dos2unix and unix2dos commands using setlocal ff=unix/ff=dos and possible a write afterwards.
-" Make this vimrc cross platform.
 " Make Cd command which is equivelant to cd but relative to current file directory
 " Make :e with no arguemnts equivelant to :E but with working dir, and :E with filepath equivelant to :e but relative to current file directory.
 " Execute "set modified" when folding (count folds as changes, matching the behavior of saving folds on writing)
 
+"" FUCK NETRW.
+"let g:loaded_netrwPlugin = 1
 
 let vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let vimfilesDir = vimfilesPath
@@ -95,8 +95,12 @@ autocmd FileType java cnoreabbrev <expr> Build ((getcmdtype() is# ':' && getcmdl
 
 " Bind Delete to :bd (delete buffer)
 nnoremap <Del> :bd<CR>
+" Stronger buffer deletion against mofified/persistant buffers
 nnoremap <S-Del> :exec "bd!" bufnr('%')<CR>
-nnoremap <C-Del> :%bd<CR>
+" Delete all buffers
+nnoremap <C-S-Del> :%bd<CR>
+" Close a window (the buffer remains)
+nnoremap <C-Del> :close<CR>
 " For persistant/buggy buffers 
 
 " make Y behave like C,D and not yy
@@ -131,6 +135,8 @@ cnoremap <S-Space> <CR>
 map <Nul> <C-Space>
 map! <Nul> <C-Space>
 tmap <Nul> <C-Space>
+" Note: this sacrifices the ctrl+@ combination which is also interpeted as
+" <Nul>
 
 
 " Bind ctrl+enter in insert mode to create new line and move to next line *SCRAPPED*
@@ -161,6 +167,5 @@ inoremap <expr>j pumvisible() ? "\<C-N>" : "j"
 inoremap <expr>k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr><C-Space> pumvisible() ? "\<C-E>" : "<Esc>"
 inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
-
 exec 'source' vimfilesPath.'/pluggins.vim'
 exec 'source' vimfilesPath.'/commands.vim'
