@@ -1,14 +1,16 @@
-exec 'source' vimfilesPath.'/settings.vim'
-exec 'source' vimfilesPath.'/basicMaps.vim'
+source ~/vimfiles/settings.vim
+source ~/vimfiles/basicMaps.vim
 
 vnoremap p "_dP
 " I didn't document this, I assume this is because intellij uses select mode
 " instead of visual mode sometimes
 
-nnoremap <c-j> :action MoveLineDown<CR>
-nnoremap <c-k> :action MoveLineUp<CR>
+nnoremap <C-j> :action MoveLineDown<CR>
+nnoremap <C-k> :action MoveLineUp<CR>
 
-nnoremap <c-c> :action CodeCompletion<CR>
+nnoremap <C-c> :action CodeCompletion<CR>
+inoremap <C-c> <c-o>:action CodeCompletion<CR>
+
 
 "nnoremap j :action EditorDown<CR>
 "nnoremap k :action EditorUp<CR>
