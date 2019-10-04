@@ -1,0 +1,15 @@
+exec 'source' vimfilesPath.'/settings.vim'
+exec 'source' vimfilesPath.'/basicMaps.vim'
+
+vnoremap p "_dP
+" I didn't document this, I assume this is because intellij uses select mode
+" instead of visual mode sometimes
+
+nnoremap <c-j> :action MoveLineDown<CR>
+nnoremap <c-k> :action MoveLineUp<CR>
+
+nnoremap <c-c> :action CodeCompletion<CR>
+
+"nnoremap j :action EditorDown<CR>
+"nnoremap k :action EditorUp<CR>
+" ^ Tried these for navigating with j and k in the CodeCompletion suggestion menu, didn't work

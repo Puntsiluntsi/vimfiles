@@ -12,6 +12,7 @@ let $MYVIMRC = resolve(expand('<sfile>:p'))
 exec "set runtimepath+=".vimfilesPath
 
 exec 'source' vimfilesPath.'/settings.vim'
+exec 'source' vimfilesPath.'/basicMaps.vim'
 
 " Color Scheme
 let colorScheme256 = 'monokai'
@@ -103,11 +104,6 @@ nnoremap <C-S-Del> :%bd<CR>
 nnoremap <C-Del> :close<CR>
 " For persistant/buggy buffers 
 
-" make Y behave like C,D and not yy
-nnoremap Y y$
-
-" Bind <Space> to :
-noremap <Space> :
 
 " Appending/Inserting single character (with s/S)
 function! RepeatChar(char, count)
@@ -121,15 +117,6 @@ nnoremap <silent>S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1
 "xnoremap <silent>s I<C-O>:<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR><Esc>
 "xnoremap <silent>S A<C-O>:<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR><Esc>
 " tried making s/S work for visual block mode, failed for now (the command "visual" has nothing to do with what is actually needed)
-
-" Bind Ctrl+Space to toggle insert mode (alternative to i,esc)
-noremap <C-Space> <Esc>
-inoremap <C-Space> <Esc>
-cnoremap <C-Space> <C-C>
-tnoremap <C-Space> <C-\><C-N>
-nnoremap <C-Space> i
-
-cnoremap <S-Space> <CR>
 
 " map Nul into C-Space for vim to interpet actual ctrl+space on terminal as C-Space:
 map <Nul> <C-Space>
@@ -158,9 +145,6 @@ nnoremap <silent><S-Tab> :<C-U>execute 'bp' v:count1<CR>
 " Ctrl+Tab and Ctrl+Shift+Tab for switching between tabs:
 nnoremap <silent><C-Tab> :<C-U>execute 'tabn' (v:count==0 ? '' : v:count) <CR>
 nnoremap <silent><C-S-Tab> :<C-U>execute 'tabp' v:count1<CR>
-
-" Replace with yanked text without cutting replaced text (in visual mode):
-xnoremap p "_dP
 
 " Use normal navigation keys in insert mode pop-up menus:
 inoremap <expr>j pumvisible() ? "\<C-N>" : "j"
