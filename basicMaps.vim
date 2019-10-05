@@ -18,3 +18,10 @@ nnoremap <C-Space> i
 
 " Replace with yanked text without cutting replaced text (in visual mode):
 xnoremap p "_dP
+
+" map <Nul> to <C-Space> for vim to interpet actual ctrl+space on terminal as <C-Space>:
+map <Nul> <C-Space>
+map! <Nul> <C-Space>
+tmap <Nul> <C-Space>
+" Note: this sacrifices the ctrl+@ combination which is also interpeted as <Nul>
+

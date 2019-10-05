@@ -50,3 +50,7 @@ set incsearch
 " File Format settings
 set fileformats=unix,dos " Windows default is dos,unix which creates new file with CRLF.
 
+" Format options:
+setglobal formatoptions+=j
+
+setglobal textwidth=100

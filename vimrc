@@ -102,7 +102,6 @@ nnoremap <S-Del> :exec "bd!" bufnr('%')<CR>
 nnoremap <C-S-Del> :%bd<CR>
 " Close a window (the buffer remains)
 nnoremap <C-Del> :close<CR>
-" For persistant/buggy buffers 
 
 
 " Appending/Inserting single character (with s/S)
@@ -118,20 +117,10 @@ nnoremap <silent>S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1
 "xnoremap <silent>S A<C-O>:<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR><Esc>
 " tried making s/S work for visual block mode, failed for now (the command "visual" has nothing to do with what is actually needed)
 
-" map Nul into C-Space for vim to interpet actual ctrl+space on terminal as C-Space:
-map <Nul> <C-Space>
-map! <Nul> <C-Space>
-tmap <Nul> <C-Space>
-" Note: this sacrifices the ctrl+@ combination which is also interpeted as
-" <Nul>
-
-
-" Bind ctrl+enter in insert mode to create new line and move to next line *SCRAPPED*
-
 " Swap lines with ctrl+J and ctrl+K:
-" TODO: make these into functions which can be used with count.
 nnoremap <silent><C-J> :<C-U>call PushPos()<CR>:let tmp=@a<CR>"add"ap:let @a=tmp<CR>:<C-U>let [posy,posx]=PopPos()<CR>:<C-U>call cursor(posy+1,posx)<CR>
 nnoremap <silent><C-K> :<C-U>call PushPos()<CR>:let tmp=@a<CR><Up>"add"ap<Up>:let @a=tmp<CR>:<C-U>let [posy,posx]=PopPos()<CR>:<C-U>call cursor(posy-1,posx)<CR>
+" TODO: make these into functions which can be used with count.
 
 " Enter, (Ctrl+Enter and Shift+Enter in _gvimrc):
 nnoremap <silent><Enter> :<C-U>call PushPos()<CR>O<Esc>:<C-U>let [posy,posx]=PopPos()<CR>:<C-U>call cursor(posy+1,posx)<CR>
