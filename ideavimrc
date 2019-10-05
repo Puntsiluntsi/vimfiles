@@ -8,10 +8,7 @@ vnoremap p "_dP
 nnoremap <C-j> :action MoveLineDown<CR>
 nnoremap <C-k> :action MoveLineUp<CR>
 
-nnoremap <C-c> :action CodeCompletion<CR>
-inoremap <C-c> <c-o>:action CodeCompletion<CR>
-
-
-"nnoremap j :action EditorDown<CR>
-"nnoremap k :action EditorUp<CR>
-" ^ Tried these for navigating with j and k in the CodeCompletion suggestion menu, didn't work
+nnoremap <C-n> :action CodeCompletion<CR>
+inoremap <C-n> <c-o>:action CodeCompletion<CR>
+" The double-completion (deeper completion) made by pressing the completion hotkey twice does not work when using the vim emulation, ctrl-n should be
+" modified to use the IDEA shortcut (which should be changed to be mapped to basic completion).
