@@ -6,13 +6,13 @@
 "" FUCK NETRW.
 "let g:loaded_netrwPlugin = 1
 
-let vimfilesPath = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-let vimfilesDir = vimfilesPath
+let vimfilesDir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+" (determined by the path of this vimrc file's directory)
 let $MYVIMRC = resolve(expand('<sfile>:p'))
-exec "set runtimepath+=".vimfilesPath
+exec "set runtimepath+=".vimfilesDir
 
-exec 'source' vimfilesPath.'/settings.vim'
-exec 'source' vimfilesPath.'/basicMaps.vim'
+runtime settings.vim
+runtime basicMaps.vim
 
 " Color Scheme
 let colorScheme256 = 'monokai'
@@ -44,7 +44,7 @@ endfunction
 autocmd FileType netrw setl bufhidden=delete
 
 " Save folds
-let &viewdir = vimfilesPath."/view"
+let &viewdir = vimfilesDir."/view"
 
 augroup AutoSaveFolds
   autocmd!
@@ -53,7 +53,7 @@ augroup AutoSaveFolds
 augroup END
 
 " Refresh plugin docs:
-exec "helptags" vimfilesPath."/doc"
+exec "helptags" vimfilesDir."/doc"
 
 " Change Ctrl-P path to cwd:
 let g:ctrlp_working_path_mode = 'rwa'
@@ -151,5 +151,6 @@ inoremap <expr>j pumvisible() ? "\<C-N>" : "j"
 inoremap <expr>k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr><C-Space> pumvisible() ? "\<C-E>" : "<Esc>"
 inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
-exec 'source' vimfilesPath.'/pluggins.vim'
-exec 'source' vimfilesPath.'/commands.vim'
+
+runtime pluggins.vim
+runtime commands.vim

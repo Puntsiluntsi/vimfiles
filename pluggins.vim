@@ -1,4 +1,4 @@
-call plug#begin(vimfilesPath.'/plugged')
+call plug#begin(vimfilesDir.'/plugged')
 
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
