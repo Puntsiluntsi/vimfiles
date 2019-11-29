@@ -143,10 +143,19 @@ inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
 
 function! DiffWithSaved()
   let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
+  vnew | r # | normal! ggdd
   diffthis
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+  normal 
+  diffthis
+endfunction
+
+function! Diff(...)
+    if a:0==0
+        call DiffWithSaved()
+    else
+        execute 'vertical diffsplit' a:1
+   endif
 endfunction
 
 runtime pluggins.vim

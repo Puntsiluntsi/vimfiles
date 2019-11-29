@@ -11,5 +11,5 @@ command! -bar WriteDos set ff=dos | write
 command! -bar Dos2Unix write | edit ++ff=dos | WriteUnix
 command! -bar Unix2Dos write | edit ++ff=dos | write
 command! -bar DiffSaved call DiffWithSaved()
-command! -bar Diff call DiffWithSaved() " TODO: make this into a command with arguments, with the current definition as no-argument default
+command! -bar -nargs=? Diff call Diff(<f-args>) " TODO: make this into a command with arguments, with the current definition as no-argument default
 
