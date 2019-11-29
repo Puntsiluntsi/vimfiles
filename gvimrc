@@ -2,7 +2,7 @@
 exec 'colorscheme' colorScheme256
 
 " Font
-set guifont=Consolas:h17 
+set guifont=Consolas:h18 
 
 " Standard Ctrl+Enter, Ctrl+Shift+Enter binds
 nnoremap <C-Enter> o<Esc>

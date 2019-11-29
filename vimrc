@@ -141,5 +141,13 @@ inoremap <expr>k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr><C-Space> pumvisible() ? "\<C-E>" : "<Esc>"
 inoremap <expr><S-Space> pumvisible() ? "\<C-Y>" : "<Esc>"
 
+function! DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+
 runtime pluggins.vim
 runtime commands.vim
